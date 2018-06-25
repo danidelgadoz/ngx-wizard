@@ -1,0 +1,87 @@
+$primary: #1b2f73;
+$accent: #93c737;
+
+$wizard-line-width: 4px;
+$wizzard-bullet-size: 40px;
+$wizzard-unlocked-color: #d6dce9;
+
+.wizard {
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  counter-reset: wizard;
+
+  li {
+    flex: 1;
+    list-style-type: none;
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    color: #282828;
+
+    &:before {
+      counter-increment: wizard;
+      content: counter(wizard);
+      display: block;
+      color: #ffffff;
+      background-color: $accent;
+      border: $wizard-line-width solid $accent;
+      width: $wizzard-bullet-size;
+      height: $wizzard-bullet-size;
+      line-height: $wizzard-bullet-size;
+      border-radius: 50%;
+      position: relative;
+      left: 50%;
+      margin-bottom: $wizzard-bullet-size / 2;
+      margin-left: $wizzard-bullet-size * -0.5;
+      z-index: 1;
+      font-size: 20px;
+      font-weight: bold;
+      transition: all 0.5s ease-in;
+    }
+
+    &:after {
+      background: linear-gradient(to right, $accent 50%, $wizzard-unlocked-color 50%);
+      background-size: 200% 100%;
+      background-position:left bottom;
+      transition: background 0.5s ease-in;
+    }
+
+    & + li:after{
+      content: "";
+      display: block;
+      width: 100%;
+      height: $wizard-line-width;
+      position: absolute;
+      left: -50%;
+      top: $wizzard-bullet-size / 2;
+    }
+  }
+
+  li.active {
+    &:before {
+      background-color: #ffffff;
+      color: $primary;
+      border: 4px solid $primary;
+    }
+
+    ~ li {
+      &:after {
+        background-color: $wizzard-unlocked-color;
+        background-position: right bottom;
+      }
+
+      &:before {
+        background-color: #ffffff;
+        color: $wizzard-unlocked-color;
+        border-color: $wizzard-unlocked-color;
+      }
+    }
+  }
+
+  @media (max-width: 360px) {
+    li {
+      color: transparent;
+    }
+  }
+}
