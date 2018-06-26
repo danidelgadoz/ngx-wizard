@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
 $primary: #1b2f73;
 $accent: #93c737;
 
@@ -21,7 +23,8 @@ $wizzard-unlocked-color: #d6dce9;
 
     &:before {
       counter-increment: wizard;
-      content: counter(wizard);
+      font-family: "Material Icons";
+      content: "done";
       display: block;
       color: #ffffff;
       background-color: $accent;
@@ -60,6 +63,8 @@ $wizzard-unlocked-color: #d6dce9;
 
   li.active {
     &:before {
+      content: counter(wizard);
+      font-family: inherit;
       background-color: #ffffff;
       color: $primary;
       border: 4px solid $primary;
@@ -72,6 +77,8 @@ $wizzard-unlocked-color: #d6dce9;
       }
 
       &:before {
+        content: counter(wizard);
+        font-family: inherit;
         background-color: #ffffff;
         color: $wizzard-unlocked-color;
         border-color: $wizzard-unlocked-color;
