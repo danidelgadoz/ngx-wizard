@@ -10,9 +10,9 @@ export class WizardService {
 
   constructor() { }
 
-  sendStep(_step: number) {
-    this.step = _step;
-    this.subject.next(_step);
+  sendStep(_index: number) {
+    this.step = _index;
+    this.subject.next(_index);
   }
 
   getStep(): Observable<number> {
