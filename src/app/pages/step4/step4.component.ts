@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { WizardService } from '../../wizard/wizard.service';
 
 @Component({
@@ -8,12 +9,15 @@ import { WizardService } from '../../wizard/wizard.service';
 })
 export class Step4Component implements OnInit {
 
-  constructor(private wizardService: WizardService) { }
+  constructor(private wizardService: WizardService, private _location: Location) { }
 
   ngOnInit() {
     // send a step(number) to subscribers via observable subject
     this.wizardService.sendStep(3);
   }
 
+  goBack() {
+    this._location.back();
+  }
 
 }
